@@ -13,7 +13,7 @@ const floatingCards = [
 
 const Hero = () => {
   return (
-    <section className="relative flex items-center overflow-visible py-24 lg:py-28">
+    <section className="relative flex items-center overflow-visible py-16 lg:py-20 min-h-0">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy to-navy/90" />
       <div className="absolute bottom-0 left-0 right-0">
