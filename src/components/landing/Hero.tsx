@@ -64,9 +64,10 @@ const Hero = () => {
 
         {/* Right — circle + floating cards */}
         <div className="hidden lg:flex justify-center relative">
+          <img src={logo} alt="Архимед" className="absolute -top-4 -right-2 w-28 xl:w-32 h-auto brightness-0 invert opacity-40 z-10" />
           <div className="w-80 h-80 xl:w-96 xl:h-96 rounded-full bg-gradient-to-br from-orange/30 to-orange/10 border border-orange/20 flex items-center justify-center">
             <div className="w-64 h-64 xl:w-80 xl:h-80 rounded-full bg-navy/50 border border-white/10 flex items-center justify-center">
-              <img src={logo} alt="Архимед" className="w-40 xl:w-48 h-auto brightness-0 invert opacity-60" />
+              <Users size={80} className="text-orange/60" />
             </div>
           </div>
 
