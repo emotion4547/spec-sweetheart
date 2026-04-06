@@ -21,8 +21,8 @@ const Advantages = () => (
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {advantages.map((a, i) => (
-          <div key={i} className="hover-lift flex gap-5 bg-card rounded-2xl p-6 border border-border items-start">
-            <div className="w-12 h-12 rounded-xl bg-orange/10 flex items-center justify-center shrink-0">
+          <div key={i} className="hover-lift flex gap-5 bg-card rounded-2xl p-6 border border-orange/15 items-start hover:border-orange/30 transition-colors group">
+            <div className="w-12 h-12 rounded-xl bg-orange/15 flex items-center justify-center shrink-0 group-hover:bg-orange/25 transition-colors">
               <a.icon size={22} className="text-orange" />
             </div>
             <div>
