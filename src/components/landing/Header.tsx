@@ -6,7 +6,7 @@ const navLinks = [
   { label: "Услуги", href: "#services" },
   { label: "Как работаем", href: "#how-we-work" },
   { label: "Преимущества", href: "#advantages" },
-  { label: "Стоимость", href: "#pricing" },
+  
   { label: "Контакты", href: "#contacts" },
 ];
 
