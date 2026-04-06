@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Users, Clock, MapPin, ShieldCheck } from "lucide-react";
 import logo from "@/assets/logo.png";
+import worker from "@/assets/worker.png";
 
 const floatingCards = [
   { icon: Users, label: "1000+ сотрудников", pos: "top-8 -right-4", delay: "" },
@@ -65,10 +66,8 @@ const Hero = () => {
         {/* Right — circle + floating cards */}
         <div className="hidden lg:flex justify-center relative">
           
-          <div className="w-80 h-80 xl:w-96 xl:h-96 rounded-full bg-gradient-to-br from-orange/30 to-orange/10 border border-orange/20 flex items-center justify-center">
-            <div className="w-64 h-64 xl:w-80 xl:h-80 rounded-full bg-navy/50 border border-white/10 flex items-center justify-center">
-              <Users size={80} className="text-orange/60" />
-            </div>
+          <div className="w-80 h-80 xl:w-96 xl:h-96 rounded-full bg-gradient-to-br from-orange/30 to-orange/10 border border-orange/20 flex items-end justify-center overflow-hidden">
+            <img src={worker} alt="Сотрудник Архимед" className="w-72 xl:w-[22rem] h-auto object-contain drop-shadow-2xl" />
           </div>
 
           {floatingCards.map((c, i) => (
