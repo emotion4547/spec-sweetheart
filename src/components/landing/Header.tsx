@@ -37,7 +37,7 @@ const Header = () => {
       <div className="container mx-auto h-full flex items-center justify-between px-4">
         {/* Logo */}
         <a href="#" className="flex items-center gap-2">
-          <img src={logo} alt="Архимед" className="h-10 w-auto brightness-0 invert" />
+          <img src={logo} alt="Архимед" className="h-14 w-auto brightness-0 invert -my-2" />
         </a>
 
         {/* Desktop Nav */}
