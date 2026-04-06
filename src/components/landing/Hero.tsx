@@ -1,0 +1,89 @@
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Users, Clock, MapPin, ShieldCheck } from "lucide-react";
+
+const floatingCards = [
+  { icon: Users, label: "1000+ сотрудников", pos: "top-8 -right-4", delay: "" },
+  { icon: Clock, label: "Вывод за 24 часа", pos: "top-1/3 -left-8", delay: "animate-float-delayed" },
+  { icon: MapPin, label: "Работаем по РФ", pos: "bottom-1/4 -right-6", delay: "" },
+  { icon: ShieldCheck, label: "Контроль качества", pos: "bottom-4 -left-4", delay: "animate-float-delayed" },
+];
+
+const Hero = () => {
+  return (
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy to-navy/90" />
+      <div className="absolute bottom-0 left-0 right-0">
+        <svg viewBox="0 0 1440 120" className="w-full text-background" preserveAspectRatio="none">
+          <path
+            fill="currentColor"
+            d="M0,64L60,58.7C120,53,240,43,360,48C480,53,600,75,720,80C840,85,960,75,1080,64C1200,53,1320,43,1380,37.3L1440,32L1440,120L0,120Z"
+          />
+        </svg>
+      </div>
+      {/* Blur blobs */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-orange/10 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+        {/* Left */}
+        <div className="space-y-8">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+            Аутсорсинг линейного персонала{" "}
+            <span className="text-orange">за 24 часа</span>
+          </h1>
+          <p className="text-lg text-white/70 max-w-lg">
+            Предоставим квалифицированных сотрудников для вашего склада, производства
+            или логистического центра. Без рисков — с гарантией замены.
+          </p>
+
+          {/* Form */}
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 space-y-4 max-w-md border border-white/10">
+            <Input
+              placeholder="Ваше имя"
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12 rounded-xl"
+            />
+            <Input
+              placeholder="Телефон"
+              className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12 rounded-xl"
+            />
+            <select className="w-full h-12 rounded-xl bg-white/10 border border-white/20 text-white/70 px-3 text-sm">
+              <option value="">Выберите услугу</option>
+              <option>Грузчики</option>
+              <option>Комплектовщики</option>
+              <option>Упаковщики</option>
+              <option>Разнорабочие</option>
+            </select>
+            <Button className="w-full h-12 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl text-base transition-transform hover:scale-[1.02]">
+              Получить предложение
+            </Button>
+          </div>
+        </div>
+
+        {/* Right — circle + floating cards */}
+        <div className="hidden lg:flex justify-center relative">
+          <div className="w-80 h-80 xl:w-96 xl:h-96 rounded-full bg-gradient-to-br from-orange/30 to-orange/10 border border-orange/20 flex items-center justify-center">
+            <div className="w-64 h-64 xl:w-80 xl:h-80 rounded-full bg-navy/50 border border-white/10 flex items-center justify-center">
+              <Users size={80} className="text-orange/60" />
+            </div>
+          </div>
+
+          {floatingCards.map((c, i) => (
+            <div
+              key={i}
+              className={`absolute ${c.pos} bg-white/10 backdrop-blur-md rounded-xl px-4 py-3 flex items-center gap-3 border border-white/10 ${
+                c.delay || "animate-float"
+              }`}
+            >
+              <c.icon size={20} className="text-orange" />
+              <span className="text-white text-sm font-medium whitespace-nowrap">{c.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;
