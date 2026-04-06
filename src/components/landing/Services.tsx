@@ -188,10 +188,13 @@ const Services = () => {
               <div
                 key={i}
                 onClick={() => setSelectedProfession({ profession: p, service: selected })}
-                className="flex items-center justify-between rounded-xl border border-border bg-muted/50 px-5 py-3 cursor-pointer hover:bg-orange/10 hover:border-orange/30 transition-colors"
+                className="group/item flex items-center justify-between rounded-xl border border-border bg-muted/50 px-5 py-3 cursor-pointer hover:bg-orange/10 hover:border-orange/30 hover:shadow-md transition-all duration-200 hover:translate-x-1"
               >
-                <span className="font-medium text-foreground">{p.name}</span>
-                <span className="text-orange font-semibold text-sm whitespace-nowrap">{p.price}</span>
+                <span className="font-medium text-foreground group-hover/item:text-orange transition-colors">{p.name}</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-orange font-semibold text-sm whitespace-nowrap">{p.price}</span>
+                  <span className="text-orange/0 group-hover/item:text-orange transition-all duration-200 text-lg">→</span>
+                </div>
               </div>
             ))}
           </div>
