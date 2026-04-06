@@ -5,12 +5,12 @@ import logo from "@/assets/logo.png";
 import worker from "@/assets/worker.png";
 
 const floatingCards = [
-  { icon: Users, label: "1000+ сотрудников", pos: "top-2 -right-4", delay: "" },
-  { icon: Clock, label: "Вывод за 24 часа", pos: "top-[20%] -left-10", delay: "animate-float-delayed" },
-  { icon: MapPin, label: "Работаем по всей РФ", pos: "top-[38%] -right-6", delay: "" },
-  { icon: ShieldCheck, label: "Контроль качества", pos: "top-[56%] -left-6", delay: "animate-float-delayed" },
-  { icon: Clock, label: "Гарантия замены", pos: "top-[12%] left-1/4", delay: "animate-float-delayed" },
-  { icon: Users, label: "Договор и документы", pos: "top-[48%] right-1/4", delay: "" },
+  { icon: Users, label: "1000+ сотрудников", pos: "top-0 -right-8", delay: "" },
+  { icon: Clock, label: "Вывод за 24 часа", pos: "top-[18%] -left-12", delay: "animate-float-delayed" },
+  { icon: MapPin, label: "Работаем по всей РФ", pos: "top-[36%] -right-10", delay: "" },
+  { icon: ShieldCheck, label: "Контроль качества", pos: "top-[54%] -left-14", delay: "animate-float-delayed" },
+  { icon: Clock, label: "Гарантия замены", pos: "top-[72%] -right-8", delay: "animate-float-delayed" },
+  { icon: Users, label: "Договор и документы", pos: "top-[90%] -left-10", delay: "" },
 ];
 
 const Hero = () => {
