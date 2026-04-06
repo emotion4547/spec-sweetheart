@@ -70,7 +70,7 @@ const Hero = () => {
         {/* Right — circle + floating cards */}
         <div className="hidden lg:flex justify-center relative mb-[-80px]">
           
-          <img src={worker} alt="Сотрудник Архимед" className="w-[28rem] xl:w-[34rem] h-auto object-contain drop-shadow-2xl relative z-20" />
+          <img src={worker} alt="Сотрудник Архимед" className="w-[28rem] xl:w-[34rem] h-auto object-contain relative z-20" style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(0,0,0,0.3))" }} />
 
           {floatingCards.map((c, i) => (
             <div
