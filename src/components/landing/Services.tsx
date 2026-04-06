@@ -175,16 +175,16 @@ const Services = () => {
           {services.map((s, i) => (
             <div
               key={i}
-              className="hover-lift group bg-card rounded-2xl p-8 border border-border text-center"
+              className="hover-lift group bg-card rounded-2xl p-8 border border-orange/20 text-center hover:border-orange/40 transition-colors"
             >
-              <div className="w-16 h-16 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-6 group-hover:bg-orange/20 transition-colors">
+              <div className="w-16 h-16 rounded-full bg-orange/15 flex items-center justify-center mx-auto mb-6 group-hover:bg-orange/25 transition-colors ring-2 ring-orange/10 group-hover:ring-orange/30">
                 <s.icon size={28} className="text-orange" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-3">{s.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6">{s.desc}</p>
               <Button
                 variant="outline"
-                className="rounded-full border-orange/30 text-orange hover:bg-orange hover:text-accent-foreground transition-all"
+                className="rounded-full border-orange/40 text-orange hover:bg-orange hover:text-foreground font-semibold transition-all"
                 onClick={() => setSelected(s)}
               >
                 Подробнее

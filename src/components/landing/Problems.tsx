@@ -21,10 +21,10 @@ const Problems = () => (
         {problems.map((p, i) => (
           <div
             key={i}
-            className="hover-lift bg-card rounded-2xl p-8 border border-border group"
+            className="hover-lift bg-card rounded-2xl p-8 border border-orange/15 group hover:border-orange/30 transition-colors"
           >
-            <div className="w-14 h-14 rounded-2xl bg-destructive/10 flex items-center justify-center mb-5 group-hover:bg-orange/10 transition-colors">
-              <p.icon size={24} className="text-destructive group-hover:text-orange transition-colors" />
+            <div className="w-14 h-14 rounded-2xl bg-orange/10 flex items-center justify-center mb-5 group-hover:bg-orange/20 transition-colors">
+              <p.icon size={24} className="text-orange" />
             </div>
             <h3 className="text-lg font-bold text-foreground mb-2">{p.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
