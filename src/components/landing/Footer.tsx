@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => (
   <footer id="contacts" className="bg-navy-deep text-white py-16">
@@ -6,10 +7,7 @@ const Footer = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <div className="text-2xl font-extrabold mb-4">
-            <span className="text-white">Архи</span>
-            <span className="text-orange">мет</span>
-          </div>
+          <img src={logo} alt="Архимед" className="h-14 w-auto brightness-0 invert mb-4" />
           <p className="text-white/50 text-sm leading-relaxed">
             Аутсорсинг линейного персонала для складов, производств и логистических центров по всей России.
           </p>
