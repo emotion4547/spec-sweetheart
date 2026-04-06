@@ -5,10 +5,10 @@ import logo from "@/assets/logo.png";
 import worker from "@/assets/worker.png";
 
 const floatingCards = [
-  { icon: Users, label: "1000+ сотрудников", pos: "top-8 -right-4", delay: "" },
-  { icon: Clock, label: "Вывод за 24 часа", pos: "top-1/3 -left-8", delay: "animate-float-delayed" },
-  { icon: MapPin, label: "Работаем по РФ", pos: "bottom-1/4 -right-6", delay: "" },
-  { icon: ShieldCheck, label: "Контроль качества", pos: "bottom-4 -left-4", delay: "animate-float-delayed" },
+  { icon: Users, label: "1000+ сотрудников", pos: "top-4 -right-4", delay: "" },
+  { icon: Clock, label: "Вывод за 24 часа", pos: "top-4 -left-8", delay: "animate-float-delayed" },
+  { icon: MapPin, label: "Работаем по РФ", pos: "top-1/3 -right-6", delay: "" },
+  { icon: ShieldCheck, label: "Контроль качества", pos: "top-1/3 -left-4", delay: "animate-float-delayed" },
 ];
 
 const Hero = () => {
