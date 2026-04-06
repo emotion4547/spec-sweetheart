@@ -7,7 +7,7 @@ const Footer = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <img src={logo} alt="Архимед" className="h-14 w-auto brightness-0 invert mb-4" />
+          <img src={logo} alt="Архимед" className="h-20 w-auto brightness-0 invert mb-4 -my-3" />
           <p className="text-white/50 text-sm leading-relaxed">
             Аутсорсинг линейного персонала для складов, производств и логистических центров по всей России.
           </p>
