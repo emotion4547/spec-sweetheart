@@ -1,4 +1,5 @@
 import { FileText, Search, UserCheck, BarChart3 } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const steps = [
   { icon: FileText, title: "Заявка", desc: "Оставьте заявку на сайте или по телефону" },
@@ -8,7 +9,13 @@ const steps = [
 ];
 
 const HowWeWork = () => (
-  <section id="how-we-work" className="py-20 lg:py-28 bg-secondary/50">
+  <section id="how-we-work" className="py-20 lg:py-28 bg-secondary/50 relative overflow-hidden">
+    {/* Background logo watermark */}
+    <img
+      src={logo}
+      alt=""
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] lg:w-[700px] h-auto opacity-[0.04] pointer-events-none select-none"
+    />
     <div className="container mx-auto px-4">
       <div className="text-center mb-16">
         <p className="text-orange font-semibold text-sm uppercase tracking-widest mb-3">Процесс</p>
