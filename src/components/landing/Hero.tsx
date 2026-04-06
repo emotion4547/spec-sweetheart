@@ -39,7 +39,7 @@ const Hero = () => {
           </p>
 
           {/* Form */}
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 space-y-4 max-w-md border border-white/10">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 space-y-4 max-w-md border border-white/20 shadow-lg shadow-black/20">
             <Input
               placeholder="Ваше имя"
               className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12 rounded-xl"
