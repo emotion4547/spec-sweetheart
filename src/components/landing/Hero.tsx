@@ -11,7 +11,7 @@ const floatingCards = [
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
+    <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20 pb-32">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy to-navy/90" />
       <div className="absolute bottom-0 left-0 right-0">
