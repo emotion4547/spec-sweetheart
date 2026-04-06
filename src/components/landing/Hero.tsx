@@ -66,9 +66,7 @@ const Hero = () => {
         {/* Right — circle + floating cards */}
         <div className="hidden lg:flex justify-center relative">
           
-          <div className="w-80 h-80 xl:w-96 xl:h-96 rounded-full bg-gradient-to-br from-orange/30 to-orange/10 border border-orange/20 flex items-end justify-center overflow-hidden">
-            <img src={worker} alt="Сотрудник Архимед" className="w-72 xl:w-[22rem] h-auto object-contain drop-shadow-2xl" />
-          </div>
+          <img src={worker} alt="Сотрудник Архимед" className="w-80 xl:w-[26rem] h-auto object-contain drop-shadow-2xl" />
 
           {floatingCards.map((c, i) => (
             <div
