@@ -29,14 +29,14 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "h-16 bg-card/95 backdrop-blur-md shadow-lg"
+          ? "h-16 bg-navy-deep/95 backdrop-blur-md shadow-lg"
           : "h-20 bg-transparent"
       }`}
     >
       <div className="container mx-auto h-full flex items-center justify-between px-4">
         {/* Logo */}
         <a href="#" className="text-2xl font-extrabold tracking-tight">
-          <span className="text-navy">Архи</span>
+          <span className="text-white">Архи</span>
           <span className="text-orange">мед</span>
         </a>
 
@@ -46,7 +46,7 @@ const Header = () => {
             <button
               key={l.href}
               onClick={() => scrollTo(l.href)}
-              className="text-sm font-medium text-foreground/80 hover:text-orange transition-colors"
+              className="text-sm font-medium text-white/80 hover:text-orange transition-colors"
             >
               {l.label}
             </button>
@@ -57,7 +57,7 @@ const Header = () => {
         <div className="hidden lg:flex items-center gap-4">
           <a
             href="tel:+78001234567"
-            className="flex items-center gap-2 text-sm font-semibold text-foreground"
+            className="flex items-center gap-2 text-sm font-semibold text-white"
           >
             <Phone size={16} className="text-orange" />
             8 (800) 123-45-67
@@ -72,7 +72,7 @@ const Header = () => {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden text-foreground"
+          className="lg:hidden text-white"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X size={28} /> : <Menu size={28} />}
