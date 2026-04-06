@@ -278,9 +278,11 @@ const Services = () => {
             />
             <Button
               onClick={handleSubmit}
+              disabled={loading}
               className="w-full h-12 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl text-base transition-transform hover:scale-[1.02]"
             >
-              Отправить заявку
+              {loading ? "Отправка..." : "Отправить заявку"}
+            </Button>
             </Button>
             <p className="text-muted-foreground text-xs text-center">
               Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
