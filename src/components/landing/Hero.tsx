@@ -13,7 +13,7 @@ const floatingCards = [
 
 const Hero = () => {
   return (
-    <section className="relative flex items-center overflow-hidden py-24 lg:py-28">
+    <section className="relative flex items-center overflow-visible py-24 lg:py-28">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy to-navy/90" />
       <div className="absolute bottom-0 left-0 right-0">
@@ -66,7 +66,7 @@ const Hero = () => {
         {/* Right — circle + floating cards */}
         <div className="hidden lg:flex justify-center relative">
           
-          <img src={worker} alt="Сотрудник Архимед" className="w-80 xl:w-[26rem] h-auto object-contain drop-shadow-2xl" />
+          <img src={worker} alt="Сотрудник Архимед" className="w-[28rem] xl:w-[34rem] h-auto object-contain drop-shadow-2xl relative z-20" />
 
           {floatingCards.map((c, i) => (
             <div
