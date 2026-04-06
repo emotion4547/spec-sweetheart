@@ -26,7 +26,7 @@ const Hero = () => {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange/20 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-orange/10 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-8 items-center">
+      <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-8 items-start">
         {/* Left */}
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
