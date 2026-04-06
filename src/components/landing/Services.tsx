@@ -4,9 +4,11 @@ import {
   Truck, Headphones, HardHat, Wheat, Shield
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription
 } from "@/components/ui/dialog";
+import { useToast } from "@/hooks/use-toast";
 
 interface Profession {
   name: string;
@@ -124,6 +126,19 @@ const services: Service[] = [
 
 const Services = () => {
   const [selected, setSelected] = useState<Service | null>(null);
+  const [selectedProfession, setSelectedProfession] = useState<{ profession: Profession; service: Service } | null>(null);
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
+  const { toast } = useToast();
+
+  const handleSubmit = () => {
+    if (!formData.name.trim() || !formData.phone.trim()) {
+      toast({ title: "Заполните обязательные поля", description: "Имя и телефон обязательны", variant: "destructive" });
+      return;
+    }
+    toast({ title: "Заявка отправлена!", description: `Мы свяжемся с вами по поводу: ${selectedProfession?.profession.name}` });
+    setSelectedProfession(null);
+    setFormData({ name: "", phone: "", email: "" });
+  };
 
   return (
     <section id="services" className="py-20 lg:py-28">
@@ -158,7 +173,8 @@ const Services = () => {
         </div>
       </div>
 
-      <Dialog open={!!selected} onOpenChange={(open) => !open && setSelected(null)}>
+      {/* Service details dialog */}
+      <Dialog open={!!selected && !selectedProfession} onOpenChange={(open) => !open && setSelected(null)}>
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-3 text-xl">
@@ -171,12 +187,61 @@ const Services = () => {
             {selected?.professions.map((p, i) => (
               <div
                 key={i}
-                className="flex items-center justify-between rounded-xl border border-border bg-muted/50 px-5 py-3"
+                onClick={() => setSelectedProfession({ profession: p, service: selected })}
+                className="flex items-center justify-between rounded-xl border border-border bg-muted/50 px-5 py-3 cursor-pointer hover:bg-orange/10 hover:border-orange/30 transition-colors"
               >
                 <span className="font-medium text-foreground">{p.name}</span>
                 <span className="text-orange font-semibold text-sm whitespace-nowrap">{p.price}</span>
               </div>
             ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Request form dialog */}
+      <Dialog open={!!selectedProfession} onOpenChange={(open) => {
+        if (!open) {
+          setSelectedProfession(null);
+          setFormData({ name: "", phone: "", email: "" });
+        }
+      }}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-xl">Оставить заявку</DialogTitle>
+            <DialogDescription>
+              {selectedProfession?.profession.name} — {selectedProfession?.profession.price}
+              <br />
+              <span className="text-muted-foreground">Категория: {selectedProfession?.service.title}</span>
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-4 space-y-4">
+            <Input
+              placeholder="Ваше имя *"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="h-12 rounded-xl"
+            />
+            <Input
+              placeholder="Телефон *"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              className="h-12 rounded-xl"
+            />
+            <Input
+              placeholder="Email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="h-12 rounded-xl"
+            />
+            <Button
+              onClick={handleSubmit}
+              className="w-full h-12 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl text-base transition-transform hover:scale-[1.02]"
+            >
+              Отправить заявку
+            </Button>
+            <p className="text-muted-foreground text-xs text-center">
+              Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+            </p>
           </div>
         </DialogContent>
       </Dialog>
