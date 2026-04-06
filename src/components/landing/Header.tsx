@@ -37,7 +37,7 @@ const Header = () => {
         {/* Logo */}
         <a href="#" className="text-2xl font-extrabold tracking-tight">
           <span className="text-navy">Архи</span>
-          <span className="text-orange">мет</span>
+          <span className="text-orange">мед</span>
         </a>
 
         {/* Desktop Nav */}
