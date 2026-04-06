@@ -176,6 +176,25 @@ const Services = () => {
             </div>
           ))}
         </div>
+
+        {/* Individual request block */}
+        <div className="mt-12 text-center bg-muted/50 rounded-2xl border border-border p-8">
+          <p className="text-lg font-semibold text-foreground mb-2">
+            Не нашли подходящую специальность?
+          </p>
+          <p className="text-muted-foreground text-sm mb-5">
+            Оставьте заявку — мы подберём персонал индивидуально под ваши задачи
+          </p>
+          <Button
+            className="rounded-full bg-orange hover:bg-orange-light text-accent-foreground font-bold px-8 h-12 text-base transition-transform hover:scale-[1.02]"
+            onClick={() => {
+              const el = document.getElementById("contact");
+              el?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Оставить заявку
+          </Button>
+        </div>
       </div>
 
       {/* Service details dialog */}
