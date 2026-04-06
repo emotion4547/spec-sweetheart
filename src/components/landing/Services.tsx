@@ -283,7 +283,6 @@ const Services = () => {
             >
               {loading ? "Отправка..." : "Отправить заявку"}
             </Button>
-            </Button>
             <p className="text-muted-foreground text-xs text-center">
               Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
             </p>
