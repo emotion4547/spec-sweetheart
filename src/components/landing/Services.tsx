@@ -136,14 +136,29 @@ const Services = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
   const { toast } = useToast();
 
-  const handleSubmit = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
     if (!formData.name.trim() || !formData.phone.trim()) {
       toast({ title: "Заполните обязательные поля", description: "Имя и телефон обязательны", variant: "destructive" });
       return;
     }
-    toast({ title: "Заявка отправлена!", description: `Мы свяжемся с вами по поводу: ${selectedProfession?.profession.name}` });
-    setSelectedProfession(null);
-    setFormData({ name: "", phone: "", email: "" });
+    setLoading(true);
+    const { error } = await supabase.from("requests").insert({
+      name: formData.name.trim(),
+      phone: formData.phone.trim(),
+      email: formData.email.trim() || null,
+      service: selectedProfession?.service.title || null,
+      profession: selectedProfession?.profession.name || null,
+    });
+    setLoading(false);
+    if (error) {
+      toast({ title: "Ошибка", description: "Не удалось отправить заявку", variant: "destructive" });
+    } else {
+      toast({ title: "Заявка отправлена!", description: `Мы свяжемся с вами по поводу: ${selectedProfession?.profession.name}` });
+      setSelectedProfession(null);
+      setFormData({ name: "", phone: "", email: "" });
+    }
   };
 
   return (
