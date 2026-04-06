@@ -25,24 +25,23 @@ const HowWeWork = () => (
       </div>
 
       {/* Desktop timeline */}
-      <div className="hidden md:block relative max-w-4xl mx-auto">
       <div className="hidden md:grid grid-cols-4 gap-6 max-w-5xl mx-auto">
-          {steps.map((step, i) => {
-            const isUp = i % 2 === 0;
-            return (
-              <div key={i} className={`flex flex-col items-center ${isUp ? "mt-0 mb-24" : "mt-24 mb-0"}`}>
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-orange/10 flex items-center justify-center mx-auto mb-4">
-                    <step.icon size={28} className="text-orange" />
-                  </div>
-                  <div className="text-xs font-bold text-orange mb-1">Шаг {i + 1}</div>
-                  <h3 className="text-lg font-bold text-foreground mb-1">{step.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
+        {steps.map((step, i) => {
+          const isUp = i % 2 === 0;
+          return (
+            <div key={i} className={`flex flex-col items-center ${isUp ? "mt-0 mb-24" : "mt-24 mb-0"}`}>
+              <div className="text-center">
+                <div className="w-16 h-16 rounded-2xl bg-orange/10 flex items-center justify-center mx-auto mb-4">
+                  <step.icon size={28} className="text-orange" />
                 </div>
+                <div className="text-xs font-bold text-orange mb-1">Шаг {i + 1}</div>
+                <h3 className="text-lg font-bold text-foreground mb-1">{step.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{step.desc}</p>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
+      </div>
 
       {/* Mobile */}
       <div className="md:hidden space-y-8">
