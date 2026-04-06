@@ -68,7 +68,7 @@ const Hero = () => {
         </div>
 
         {/* Right — circle + floating cards */}
-        <div className="hidden lg:flex justify-center relative">
+        <div className="hidden lg:flex justify-center relative mb-[-80px]">
           
           <img src={worker} alt="Сотрудник Архимед" className="w-[28rem] xl:w-[34rem] h-auto object-contain drop-shadow-2xl relative z-20" />
 
