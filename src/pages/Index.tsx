@@ -5,7 +5,7 @@ import WhenNeeded from "@/components/landing/WhenNeeded";
 import Problems from "@/components/landing/Problems";
 import HowWeWork from "@/components/landing/HowWeWork";
 import Advantages from "@/components/landing/Advantages";
-import Pricing from "@/components/landing/Pricing";
+
 import Clients from "@/components/landing/Clients";
 import Reviews from "@/components/landing/Reviews";
 import FAQ from "@/components/landing/FAQ";
@@ -21,7 +21,7 @@ const Index = () => (
     <Problems />
     <HowWeWork />
     <Advantages />
-    <Pricing />
+    
     <Clients />
     <Reviews />
     <FAQ />
