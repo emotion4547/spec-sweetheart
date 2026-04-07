@@ -67,8 +67,8 @@ const Hero = () => {
         </svg>
       </div>
       {/* Blur blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-orange/10 rounded-full blur-3xl" />
+      <div className="hidden md:block absolute top-1/4 left-1/4 w-96 h-96 bg-orange/20 rounded-full blur-3xl" />
+      <div className="hidden md:block absolute bottom-1/4 right-1/4 w-72 h-72 bg-orange/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-8 items-center">
         {/* Left */}
@@ -83,7 +83,7 @@ const Hero = () => {
           </p>
 
           {/* Form */}
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 space-y-3 max-w-xl border border-white/20 shadow-lg shadow-black/20">
+          <div className="bg-[hsl(220,47%,20%)]/80 rounded-2xl p-4 space-y-3 max-w-xl border border-white/20 shadow-lg shadow-black/20">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
                 placeholder="Ваше имя *"
@@ -140,7 +140,7 @@ const Hero = () => {
           {floatingCards.map((c, i) => (
             <div
               key={i}
-              className={`absolute ${c.pos} bg-white/10 backdrop-blur-md rounded-xl px-4 py-3 flex items-center gap-3 border border-white/10 ${
+              className={`absolute ${c.pos} bg-[hsl(220,47%,20%)]/90 rounded-xl px-4 py-3 flex items-center gap-3 border border-white/10 ${
                 c.delay || "animate-float"
               }`}
             >

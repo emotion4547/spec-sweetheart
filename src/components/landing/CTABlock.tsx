@@ -40,7 +40,7 @@ const CTABlock = () => {
   return (
     <section id="cta" className="py-20 lg:py-28 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy to-navy/90" />
-      <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-orange/15 rounded-full blur-3xl" />
+      <div className="hidden md:block absolute top-1/4 right-1/4 w-80 h-80 bg-orange/15 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-10">
@@ -52,7 +52,7 @@ const CTABlock = () => {
           </p>
         </div>
 
-        <div className="max-w-md mx-auto bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/10 space-y-4">
+        <div className="max-w-md mx-auto bg-[hsl(220,47%,20%)]/80 rounded-2xl p-8 border border-white/10 space-y-4">
           <Input
             placeholder="Ваше имя *"
             value={formData.name}
