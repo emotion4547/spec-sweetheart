@@ -44,15 +44,14 @@ const Presentation = () => {
           Узнайте больше о компании «Архимед», наших услугах, ценах и преимуществах работы с нами
         </p>
 
-        <Button
-          asChild
-          className="bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl h-14 px-10 text-base transition-transform hover:scale-105"
+        <a
+          href="/files/arhimed-presentation.pdf"
+          download="Архимед_Презентация.pdf"
+          className="inline-flex items-center justify-center gap-2 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl h-14 px-10 text-base transition-transform hover:scale-105"
         >
-          <a href="/files/arhimed-presentation.pdf" download>
-            <FileDown size={20} />
-            Скачать презентацию
-          </a>
-        </Button>
+          <FileDown size={20} />
+          Скачать презентацию
+        </a>
 
         <p className="text-white/30 text-xs mt-4">PDF · Коммерческое предложение</p>
       </div>
