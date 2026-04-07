@@ -172,6 +172,7 @@ const ScrollRevealCard = ({ children, index }: { children: React.ReactNode; inde
   );
 };
 
+const Services = () => {
   const [selected, setSelected] = useState<Service | null>(null);
   const [selectedProfession, setSelectedProfession] = useState<{ profession: Profession; service: Service } | null>(null);
   const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
