@@ -1,8 +1,13 @@
 import { useState } from "react";
-import {
-  ShoppingCart, Warehouse, UtensilsCrossed, SprayCan,
-  Truck, Headphones, HardHat, Wheat, Shield
-} from "lucide-react";
+import retailImg from "@/assets/services/retail.jpg";
+import warehouseImg from "@/assets/services/warehouse.jpg";
+import foodImg from "@/assets/services/food.jpg";
+import cleaningImg from "@/assets/services/cleaning.jpg";
+import deliveryImg from "@/assets/services/delivery.jpg";
+import callcenterImg from "@/assets/services/callcenter.jpg";
+import constructionImg from "@/assets/services/construction.jpg";
+import agricultureImg from "@/assets/services/agriculture.jpg";
+import securityImg from "@/assets/services/security.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
