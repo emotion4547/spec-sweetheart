@@ -1,7 +1,11 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Users, Clock, MapPin, ShieldCheck } from "lucide-react";
-import logo from "@/assets/logo.png";
+import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import worker from "@/assets/worker.png";
 
 const floatingCards = [
@@ -13,7 +17,42 @@ const floatingCards = [
   { icon: Users, label: "Договор и документы", pos: "top-[90%] -left-10", delay: "" },
 ];
 
+const serviceOptions = ["Грузчики", "Комплектовщики", "Упаковщики", "Разнорабочие"];
+
 const Hero = () => {
+  const [formData, setFormData] = useState({ name: "", phone: "", service: "" });
+  const [agreed, setAgreed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async () => {
+    if (!formData.name.trim() || !formData.phone.trim()) {
+      toast({ title: "Заполните обязательные поля", description: "Имя и телефон обязательны", variant: "destructive" });
+      return;
+    }
+    setLoading(true);
+    const { error } = await supabase.from("requests").insert({
+      name: formData.name.trim(),
+      phone: formData.phone.trim(),
+      service: formData.service || null,
+    });
+    setLoading(false);
+    if (error) {
+      toast({ title: "Ошибка", description: "Не удалось отправить заявку", variant: "destructive" });
+    } else {
+      toast({ title: "Заявка отправлена!", description: "Мы свяжемся с вами в ближайшее время" });
+      supabase.functions.invoke("notify-max", {
+        body: {
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          service: formData.service || null,
+        },
+      }).catch(() => {});
+      setFormData({ name: "", phone: "", service: "" });
+      setAgreed(false);
+    }
+  };
+
   return (
     <section className="relative flex items-center overflow-x-clip overflow-y-visible pt-24 lg:pt-20 pb-16 lg:py-20 min-h-0">
       {/* Background */}
@@ -46,30 +85,55 @@ const Hero = () => {
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 space-y-3 max-w-xl border border-white/20 shadow-lg shadow-black/20">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
-                placeholder="Ваше имя"
+                placeholder="Ваше имя *"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-10 rounded-xl"
               />
               <Input
-                placeholder="Телефон"
+                placeholder="Телефон *"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-10 rounded-xl"
               />
             </div>
-            <select className="w-full h-10 rounded-xl bg-white/10 border border-white/20 text-white/70 px-3 text-sm">
+            <select
+              value={formData.service}
+              onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+              className="w-full h-10 rounded-xl bg-white/10 border border-white/20 text-white/70 px-3 text-sm"
+            >
               <option value="">Выберите услугу</option>
-              <option>Грузчики</option>
-              <option>Комплектовщики</option>
-              <option>Упаковщики</option>
-              <option>Разнорабочие</option>
+              {serviceOptions.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
             </select>
-            <Button className="w-full h-10 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl text-sm transition-transform hover:scale-[1.02]">
-              Получить предложение
+            <div className="flex items-start gap-3">
+              <Checkbox
+                id="hero-agree"
+                checked={agreed}
+                onCheckedChange={(v) => setAgreed(v === true)}
+                className="mt-0.5 border-white/40 data-[state=checked]:bg-orange data-[state=checked]:border-orange"
+              />
+              <label htmlFor="hero-agree" className="text-white/50 text-xs leading-relaxed cursor-pointer">
+                Я соглашаюсь с{" "}
+                <Link to="/privacy" target="_blank" className="text-orange hover:underline">
+                  Политикой конфиденциальности
+                </Link>{" "}
+                и даю согласие на обработку персональных данных
+              </label>
+            </div>
+            <Button
+              onClick={handleSubmit}
+              disabled={loading || !agreed}
+              className="w-full h-10 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl text-sm transition-transform hover:scale-[1.02]"
+            >
+              {loading ? "Отправка..." : "Получить предложение"}
             </Button>
           </div>
         </div>
 
         {/* Right — circle + floating cards */}
         <div className="hidden lg:flex justify-center relative mb-[-80px]">
-          
           <img src={worker} alt="Сотрудник Архимед" className="w-[28rem] xl:w-[34rem] h-auto object-contain relative z-20" style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.5)) drop-shadow(0 8px 16px rgba(0,0,0,0.3))" }} />
 
           {floatingCards.map((c, i) => (
