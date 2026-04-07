@@ -192,30 +192,31 @@ const Services = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
-            <div
-              key={i}
-              className="hover-lift group bg-card rounded-2xl overflow-hidden border border-orange/20 text-center hover:border-orange/40 transition-colors flex flex-col"
-            >
-              <div className="h-40 overflow-hidden">
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+            <ScrollRevealCard key={i} index={i}>
+              <div
+                className="hover-lift group bg-card rounded-2xl overflow-hidden border border-orange/20 text-center hover:border-orange/40 transition-colors flex flex-col h-full"
+              >
+                <div className="h-40 overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold text-foreground mb-2">{s.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">{s.desc}</p>
+                  <Button
+                    variant="outline"
+                    className="rounded-full border-orange/40 text-orange hover:bg-orange hover:text-foreground font-semibold transition-all"
+                    onClick={() => setSelected(s)}
+                  >
+                    Подробнее
+                  </Button>
+                </div>
               </div>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-bold text-foreground mb-2">{s.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">{s.desc}</p>
-                <Button
-                  variant="outline"
-                  className="rounded-full border-orange/40 text-orange hover:bg-orange hover:text-foreground font-semibold transition-all"
-                  onClick={() => setSelected(s)}
-                >
-                  Подробнее
-                </Button>
-              </div>
-            </div>
+            </ScrollRevealCard>
           ))}
         </div>
 
