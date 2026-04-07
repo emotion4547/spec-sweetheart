@@ -39,7 +39,7 @@ const Footer = () => (
           <ul className="space-y-3 text-sm text-white/50">
             <li className="flex items-start gap-2 min-w-0">
               <Phone size={14} className="text-orange shrink-0 mt-0.5" />
-              <a href="tel:+79228506001" className="hover:text-white transition-colors break-all">
+              <a href="tel:+79228506001" onClick={() => { if (typeof ym === "function") ym(108428947, "reachGoal", "phone_click"); }} className="hover:text-white transition-colors break-all">
                 +7 (922) 850-60-01
               </a>
             </li>

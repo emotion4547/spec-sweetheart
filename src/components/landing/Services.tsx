@@ -208,6 +208,7 @@ const Services = () => {
           profession: selectedProfession?.profession.name || null,
         },
       }).catch(() => {});
+      if (typeof ym === "function") ym(108428947, "reachGoal", "service_form_submit");
       setSelectedProfession(null);
       setFormData({ name: "", phone: "", email: "" });
       setAgreed(false);

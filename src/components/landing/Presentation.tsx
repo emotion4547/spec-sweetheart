@@ -47,6 +47,7 @@ const Presentation = () => {
         <a
           href="/files/arhimed-presentation.pdf"
           download="Архимед_Презентация.pdf"
+          onClick={() => { if (typeof ym === "function") ym(108428947, "reachGoal", "download_presentation"); }}
           className="inline-flex items-center justify-center gap-2 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl h-14 px-10 text-base transition-transform hover:scale-105"
         >
           <FileDown size={20} />

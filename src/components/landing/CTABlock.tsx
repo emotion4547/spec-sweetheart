@@ -31,6 +31,7 @@ const CTABlock = () => {
       supabase.functions.invoke("notify-max", {
         body: { name: formData.name.trim(), phone: formData.phone.trim(), email: formData.email.trim() || null },
       }).catch(() => {});
+      if (typeof ym === "function") ym(108428947, "reachGoal", "cta_form_submit");
       setFormData({ name: "", phone: "", email: "" });
       setAgreed(false);
       navigate("/thank-you");
