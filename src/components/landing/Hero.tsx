@@ -9,7 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import worker from "@/assets/worker.png";
 
 const floatingCards = [
-  { icon: Users, label: "1000+ сотрудников", pos: "top-0 -right-8", delay: "" },
+  { icon: Users, label: "1000+ сотрудников", pos: "top-[8%] -right-8", delay: "" },
   { icon: Clock, label: "Вывод за 24 часа", pos: "top-[18%] -left-12", delay: "animate-float-delayed" },
   { icon: MapPin, label: "Работаем по всей РФ", pos: "top-[36%] -right-10", delay: "" },
   { icon: ShieldCheck, label: "Контроль качества", pos: "top-[54%] -left-14", delay: "animate-float-delayed" },
