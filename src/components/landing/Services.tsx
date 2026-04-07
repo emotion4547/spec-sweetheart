@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import retailImg from "@/assets/services/retail.jpg";
 import warehouseImg from "@/assets/services/warehouse.jpg";
@@ -137,6 +137,41 @@ const services: Service[] = [
   },
 ];
 
+const ScrollRevealCard = ({ children, index }: { children: React.ReactNode; index: number }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className="transition-all duration-700 ease-out"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0) scale(1)" : "translateY(40px) scale(0.95)",
+        transitionDelay: `${index * 100}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
 const Services = () => {
   const [selected, setSelected] = useState<Service | null>(null);
   const [selectedProfession, setSelectedProfession] = useState<{ profession: Profession; service: Service } | null>(null);
@@ -192,30 +227,31 @@ const Services = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((s, i) => (
-            <div
-              key={i}
-              className="hover-lift group bg-card rounded-2xl overflow-hidden border border-orange/20 text-center hover:border-orange/40 transition-colors flex flex-col"
-            >
-              <div className="h-40 overflow-hidden">
-                <img
-                  src={s.image}
-                  alt={s.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
+            <ScrollRevealCard key={i} index={i}>
+              <div
+                className="hover-lift group bg-card rounded-2xl overflow-hidden border border-orange/20 text-center hover:border-orange/40 transition-colors flex flex-col h-full"
+              >
+                <div className="h-40 overflow-hidden">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-xl font-bold text-foreground mb-2">{s.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">{s.desc}</p>
+                  <Button
+                    variant="outline"
+                    className="rounded-full border-orange/40 text-orange hover:bg-orange hover:text-foreground font-semibold transition-all"
+                    onClick={() => setSelected(s)}
+                  >
+                    Подробнее
+                  </Button>
+                </div>
               </div>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-bold text-foreground mb-2">{s.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">{s.desc}</p>
-                <Button
-                  variant="outline"
-                  className="rounded-full border-orange/40 text-orange hover:bg-orange hover:text-foreground font-semibold transition-all"
-                  onClick={() => setSelected(s)}
-                >
-                  Подробнее
-                </Button>
-              </div>
-            </div>
+            </ScrollRevealCard>
           ))}
         </div>
 
