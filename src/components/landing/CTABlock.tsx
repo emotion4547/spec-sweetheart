@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 
 const CTABlock = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
+  const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
 
@@ -25,11 +28,11 @@ const CTABlock = () => {
       toast({ title: "Ошибка", description: "Не удалось отправить заявку", variant: "destructive" });
     } else {
       toast({ title: "Заявка отправлена!", description: "Мы свяжемся с вами в ближайшее время" });
-      // Notify MAX (fire-and-forget)
       supabase.functions.invoke("notify-max", {
         body: { name: formData.name.trim(), phone: formData.phone.trim(), email: formData.email.trim() || null },
       }).catch(() => {});
       setFormData({ name: "", phone: "", email: "" });
+      setAgreed(false);
     }
   };
 
@@ -67,16 +70,28 @@ const CTABlock = () => {
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-12 rounded-xl"
           />
+          <div className="flex items-start gap-3">
+            <Checkbox
+              id="cta-agree"
+              checked={agreed}
+              onCheckedChange={(v) => setAgreed(v === true)}
+              className="mt-0.5 border-white/40 data-[state=checked]:bg-orange data-[state=checked]:border-orange"
+            />
+            <label htmlFor="cta-agree" className="text-white/50 text-xs leading-relaxed cursor-pointer">
+              Я соглашаюсь с{" "}
+              <Link to="/privacy" target="_blank" className="text-orange hover:underline">
+                Политикой конфиденциальности
+              </Link>{" "}
+              и даю согласие на обработку персональных данных
+            </label>
+          </div>
           <Button
             onClick={handleSubmit}
-            disabled={loading}
+            disabled={loading || !agreed}
             className="w-full h-12 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl text-base transition-transform hover:scale-[1.02]"
           >
             {loading ? "Отправка..." : "Получить предложение"}
           </Button>
-          <p className="text-white/40 text-xs text-center">
-            Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-          </p>
         </div>
       </div>
     </section>

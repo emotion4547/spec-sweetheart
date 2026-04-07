@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/logo.png";
 
 const Footer = () => (
@@ -62,8 +63,12 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="border-t border-white/10 mt-12 pt-6 text-center text-white/30 text-xs">
-        © {new Date().getFullYear()} Архимед. Все права защищены.
+      <div className="border-t border-white/10 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-white/30 text-xs">
+        <span>© {new Date().getFullYear()} Архимед. Все права защищены.</span>
+        <div className="flex gap-4">
+          <Link to="/privacy" className="hover:text-white transition-colors">Политика конфиденциальности</Link>
+          <Link to="/terms" className="hover:text-white transition-colors">Пользовательское соглашение</Link>
+        </div>
       </div>
     </div>
   </footer>
