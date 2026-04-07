@@ -18,10 +18,16 @@ const Footer = () => (
         <div>
           <h4 className="font-bold text-sm mb-4 uppercase tracking-wider text-white/70">Меню</h4>
           <ul className="space-y-2 text-sm text-white/50">
-            {["Услуги", "Как работаем", "Преимущества", "Стоимость", "FAQ"].map((l) => (
-              <li key={l}>
-                <a href={`#${l.toLowerCase().replace(/ /g, "-")}`} className="hover:text-orange transition-colors">
-                  {l}
+            {[
+              { label: "Услуги", href: "#services" },
+              { label: "Как работаем", href: "#how-we-work" },
+              { label: "Преимущества", href: "#advantages" },
+              { label: "Стоимость", href: "#pricing" },
+              { label: "FAQ", href: "#faq" },
+            ].map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="hover:text-orange transition-colors">
+                  {l.label}
                 </a>
               </li>
             ))}
