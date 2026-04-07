@@ -8,6 +8,7 @@ import Advantages from "@/components/landing/Advantages";
 
 import Clients from "@/components/landing/Clients";
 import Reviews from "@/components/landing/Reviews";
+import Presentation from "@/components/landing/Presentation";
 import FAQ from "@/components/landing/FAQ";
 import CTABlock from "@/components/landing/CTABlock";
 import Footer from "@/components/landing/Footer";
@@ -24,6 +25,7 @@ const Index = () => (
     
     <Clients />
     <Reviews />
+    <Presentation />
     <FAQ />
     <CTABlock />
     <Footer />
