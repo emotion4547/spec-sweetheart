@@ -272,6 +272,7 @@ const Services = () => {
         if (!open) {
           setSelectedProfession(null);
           setFormData({ name: "", phone: "", email: "" });
+          setAgreed(false);
         }
       }}>
         <DialogContent className="sm:max-w-md">
