@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import retailImg from "@/assets/services/retail.jpg";
 import warehouseImg from "@/assets/services/warehouse.jpg";
 import foodImg from "@/assets/services/food.jpg";
@@ -143,6 +143,7 @@ const Services = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
   const [agreed, setAgreed] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
 
@@ -163,8 +164,6 @@ const Services = () => {
     if (error) {
       toast({ title: "Ошибка", description: "Не удалось отправить заявку", variant: "destructive" });
     } else {
-      toast({ title: "Заявка отправлена!", description: `Мы свяжемся с вами по поводу: ${selectedProfession?.profession.name}` });
-      // Notify MAX (fire-and-forget)
       supabase.functions.invoke("notify-max", {
         body: {
           name: formData.name.trim(),
@@ -177,6 +176,7 @@ const Services = () => {
       setSelectedProfession(null);
       setFormData({ name: "", phone: "", email: "" });
       setAgreed(false);
+      navigate("/thank-you");
     }
   };
 
