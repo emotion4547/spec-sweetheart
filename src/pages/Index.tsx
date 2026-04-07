@@ -15,7 +15,7 @@ const CTABlock = lazy(() => import("@/components/landing/CTABlock"));
 const Footer = lazy(() => import("@/components/landing/Footer"));
 
 const Index = () => (
-  <div className="min-h-screen">
+  <main className="min-h-screen">
     <Header />
     <Hero />
     <Suspense fallback={null}>
@@ -31,7 +31,7 @@ const Index = () => (
       <CTABlock />
       <Footer />
     </Suspense>
-  </div>
+  </main>
 );
 
 export default Index;

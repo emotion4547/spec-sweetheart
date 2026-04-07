@@ -41,7 +41,7 @@ const Header = () => {
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8" aria-label="Основная навигация">
           {navLinks.map((l) => (
             <button
               key={l.href}
