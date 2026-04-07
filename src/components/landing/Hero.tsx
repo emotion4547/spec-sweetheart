@@ -73,12 +73,12 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10 grid lg:grid-cols-2 gap-8 items-center">
         {/* Left */}
-        <div className="space-y-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight -mt-8">
+        <div className="space-y-6 md:text-center md:items-center md:flex md:flex-col lg:text-left lg:items-start lg:block">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight -mt-8 md:mx-auto lg:mx-0">
             Аутсорсинг линейного персонала{" "}
             <span className="text-orange">за 24 часа</span>
           </h1>
-          <p className="text-lg text-white/70 max-w-lg">
+          <p className="text-lg text-white/70 max-w-lg md:mx-auto lg:mx-0">
             Предоставим квалифицированных сотрудников для вашего склада, производства
             или логистического центра. Без рисков — с гарантией замены.
           </p>
