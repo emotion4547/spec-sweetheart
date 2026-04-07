@@ -267,8 +267,8 @@ const Services = () => {
           <Button
             className="rounded-full bg-orange hover:bg-orange-light text-accent-foreground font-bold px-8 h-12 text-base transition-transform hover:scale-[1.02]"
             onClick={() => {
-              const el = document.getElementById("contact");
-              el?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("cta")?.scrollIntoView({ behavior: "smooth" });
+              }}
             }}
           >
             Оставить заявку
