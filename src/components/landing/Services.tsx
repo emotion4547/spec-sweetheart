@@ -22,7 +22,7 @@ interface Profession {
 }
 
 interface Service {
-  icon: React.ElementType;
+  image: string;
   title: string;
   desc: string;
   professions: Profession[];
@@ -30,7 +30,7 @@ interface Service {
 
 const services: Service[] = [
   {
-    icon: ShoppingCart,
+    image: retailImg,
     title: "Ритейл",
     desc: "Магазины, супермаркеты, торговые точки",
     professions: [
@@ -43,7 +43,7 @@ const services: Service[] = [
     ],
   },
   {
-    icon: Warehouse,
+    image: warehouseImg,
     title: "Склады и логистика",
     desc: "Складские комплексы, распределительные центры",
     professions: [
@@ -56,7 +56,7 @@ const services: Service[] = [
     ],
   },
   {
-    icon: UtensilsCrossed,
+    image: foodImg,
     title: "Общепит",
     desc: "Кафе, рестораны, фастфуд",
     professions: [
@@ -69,7 +69,7 @@ const services: Service[] = [
     ],
   },
   {
-    icon: SprayCan,
+    image: cleaningImg,
     title: "Клининг и обслуживание",
     desc: "Уборка помещений, техническое обслуживание",
     professions: [
@@ -81,7 +81,7 @@ const services: Service[] = [
     ],
   },
   {
-    icon: Truck,
+    image: deliveryImg,
     title: "Доставка и транспорт",
     desc: "Курьерская доставка, перевозки",
     professions: [
@@ -91,7 +91,7 @@ const services: Service[] = [
     ],
   },
   {
-    icon: Headphones,
+    image: callcenterImg,
     title: "Колл-центры и офис",
     desc: "Простая офисная работа, обзвон клиентов",
     professions: [
@@ -101,7 +101,7 @@ const services: Service[] = [
     ],
   },
   {
-    icon: HardHat,
+    image: constructionImg,
     title: "Строительство",
     desc: "Строительные площадки, физический труд",
     professions: [
@@ -112,7 +112,7 @@ const services: Service[] = [
     ],
   },
   {
-    icon: Wheat,
+    image: agricultureImg,
     title: "Сельское хозяйство",
     desc: "Полевые работы, сбор урожая, теплицы",
     professions: [
@@ -123,7 +123,7 @@ const services: Service[] = [
     ],
   },
   {
-    icon: Shield,
+    image: securityImg,
     title: "Охрана и базовое обслуживание",
     desc: "Охрана объектов, контроль доступа",
     professions: [
@@ -180,20 +180,27 @@ const Services = () => {
           {services.map((s, i) => (
             <div
               key={i}
-              className="hover-lift group bg-card rounded-2xl p-8 border border-orange/20 text-center hover:border-orange/40 transition-colors"
+              className="hover-lift group bg-card rounded-2xl overflow-hidden border border-orange/20 text-center hover:border-orange/40 transition-colors flex flex-col"
             >
-              <div className="w-16 h-16 rounded-full bg-orange/15 flex items-center justify-center mx-auto mb-6 group-hover:bg-orange/25 transition-colors ring-2 ring-orange/10 group-hover:ring-orange/30">
-                <s.icon size={28} className="text-orange" />
+              <div className="h-40 overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={s.title}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">{s.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">{s.desc}</p>
-              <Button
-                variant="outline"
-                className="rounded-full border-orange/40 text-orange hover:bg-orange hover:text-foreground font-semibold transition-all"
-                onClick={() => setSelected(s)}
-              >
-                Подробнее
-              </Button>
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-bold text-foreground mb-2">{s.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed mb-5 flex-1">{s.desc}</p>
+                <Button
+                  variant="outline"
+                  className="rounded-full border-orange/40 text-orange hover:bg-orange hover:text-foreground font-semibold transition-all"
+                  onClick={() => setSelected(s)}
+                >
+                  Подробнее
+                </Button>
+              </div>
             </div>
           ))}
         </div>
