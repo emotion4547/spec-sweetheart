@@ -31,16 +31,16 @@ const Clients = () => (
           Нам доверяют
         </h2>
       </div>
-      <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+      <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 overflow-hidden">
         {clients.map((client, i) => (
           <div
             key={i}
-            className="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 cursor-default select-none"
+            className="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 cursor-default select-none max-w-[42%] sm:max-w-none"
           >
             <img
               src={client.logo}
               alt={client.name}
-              className="h-10 md:h-14 w-auto object-contain"
+              className="h-8 sm:h-10 md:h-14 w-auto max-w-[140px] sm:max-w-[180px] md:max-w-none object-contain"
               loading="lazy"
             />
           </div>
