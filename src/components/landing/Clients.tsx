@@ -26,7 +26,7 @@ const Clients = () => (
   <section className="py-16 border-y border-border">
     <div className="container mx-auto px-4">
       <div className="text-center mb-12">
-        <p className="text-gold font-semibold text-sm uppercase tracking-widest mb-3">Наши клиенты</p>
+        <p className="text-orange font-semibold text-sm uppercase tracking-widest mb-3">Наши клиенты</p>
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
           Нам доверяют
         </h2>
