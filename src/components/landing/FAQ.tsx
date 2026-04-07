@@ -15,7 +15,7 @@ const faqs = [
 ];
 
 const FAQ = () => (
-  <section className="py-20 lg:py-28 bg-secondary/50">
+  <section id="faq" className="py-20 lg:py-28 bg-secondary/50">
     <div className="container mx-auto px-4">
       <div className="text-center mb-16">
         <p className="text-orange font-semibold text-sm uppercase tracking-widest mb-3">FAQ</p>
