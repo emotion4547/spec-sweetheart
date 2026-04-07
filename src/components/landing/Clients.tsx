@@ -1,5 +1,25 @@
+import halyal from "@/assets/clients/halyal.svg";
+import wheat from "@/assets/clients/logo-wheat.png";
+import safa from "@/assets/clients/safa.png";
+import vostochnaya from "@/assets/clients/vostochnaya.jpeg";
+import orenburgskaya from "@/assets/clients/orenburgskaya.jpg";
+import monetka from "@/assets/clients/monetka.webp";
+import stavropolskiy from "@/assets/clients/stavropolskiy.jpg";
+import vladimirskiy from "@/assets/clients/vladimirskiy.png";
+import logoBlack from "@/assets/clients/logo-black.svg";
+import agromax from "@/assets/clients/agromax.png";
+
 const clients = [
-  "Ozon", "Wildberries", "Яндекс.Маркет", "СберЛогистика", "DPD", "СДЭК", "Leroy Merlin", "X5 Group",
+  { name: "Халяль", logo: halyal },
+  { name: "Колос", logo: wheat },
+  { name: "Сафа", logo: safa },
+  { name: "Восточная", logo: vostochnaya },
+  { name: "Оренбургская", logo: orenburgskaya },
+  { name: "Монетка", logo: monetka },
+  { name: "Ставропольский Бройлер", logo: stavropolskiy },
+  { name: "Владимирский Стандарт", logo: vladimirskiy },
+  { name: "Вкусвилл", logo: logoBlack },
+  { name: "Agromax", logo: agromax },
 ];
 
 const Clients = () => (
@@ -9,12 +29,17 @@ const Clients = () => (
         Нам доверяют
       </p>
       <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-        {clients.map((name, i) => (
+        {clients.map((client, i) => (
           <div
             key={i}
-            className="text-lg md:text-xl font-bold text-muted-foreground/40 hover:text-foreground/60 transition-colors cursor-default select-none"
+            className="grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300 cursor-default select-none"
           >
-            {name}
+            <img
+              src={client.logo}
+              alt={client.name}
+              className="h-10 md:h-14 w-auto object-contain"
+              loading="lazy"
+            />
           </div>
         ))}
       </div>
