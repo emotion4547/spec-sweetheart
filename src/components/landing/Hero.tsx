@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -24,6 +24,7 @@ const Hero = () => {
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     if (!formData.name.trim() || !formData.phone.trim()) {
@@ -40,7 +41,6 @@ const Hero = () => {
     if (error) {
       toast({ title: "Ошибка", description: "Не удалось отправить заявку", variant: "destructive" });
     } else {
-      toast({ title: "Заявка отправлена!", description: "Мы свяжемся с вами в ближайшее время" });
       supabase.functions.invoke("notify-max", {
         body: {
           name: formData.name.trim(),
@@ -50,6 +50,7 @@ const Hero = () => {
       }).catch(() => {});
       setFormData({ name: "", phone: "", service: "" });
       setAgreed(false);
+      navigate("/thank-you");
     }
   };
 
