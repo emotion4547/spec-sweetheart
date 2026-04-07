@@ -44,7 +44,7 @@ const Hero = () => {
 
           {/* Form */}
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 space-y-3 max-w-xl border border-white/20 shadow-lg shadow-black/20">
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <Input
                 placeholder="Ваше имя"
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-10 rounded-xl"
@@ -54,18 +54,16 @@ const Hero = () => {
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-10 rounded-xl"
               />
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              <select className="w-full h-10 rounded-xl bg-white/10 border border-white/20 text-white/70 px-3 text-sm">
-                <option value="">Выберите услугу</option>
-                <option>Грузчики</option>
-                <option>Комплектовщики</option>
-                <option>Упаковщики</option>
-                <option>Разнорабочие</option>
-              </select>
-              <Button className="w-full h-10 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl text-sm transition-transform hover:scale-[1.02]">
-                Получить предложение
-              </Button>
-            </div>
+            <select className="w-full h-10 rounded-xl bg-white/10 border border-white/20 text-white/70 px-3 text-sm">
+              <option value="">Выберите услугу</option>
+              <option>Грузчики</option>
+              <option>Комплектовщики</option>
+              <option>Упаковщики</option>
+              <option>Разнорабочие</option>
+            </select>
+            <Button className="w-full h-10 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl text-sm transition-transform hover:scale-[1.02]">
+              Получить предложение
+            </Button>
           </div>
         </div>
 
