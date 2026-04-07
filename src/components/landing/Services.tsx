@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import retailImg from "@/assets/services/retail.jpg";
 import warehouseImg from "@/assets/services/warehouse.jpg";
 import foodImg from "@/assets/services/food.jpg";
@@ -10,6 +11,7 @@ import agricultureImg from "@/assets/services/agriculture.jpg";
 import securityImg from "@/assets/services/security.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription
 } from "@/components/ui/dialog";
@@ -139,6 +141,7 @@ const Services = () => {
   const [selected, setSelected] = useState<Service | null>(null);
   const [selectedProfession, setSelectedProfession] = useState<{ profession: Profession; service: Service } | null>(null);
   const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
+  const [agreed, setAgreed] = useState(false);
   const { toast } = useToast();
 
   const [loading, setLoading] = useState(false);
@@ -173,6 +176,7 @@ const Services = () => {
       }).catch(() => {});
       setSelectedProfession(null);
       setFormData({ name: "", phone: "", email: "" });
+      setAgreed(false);
     }
   };
 
@@ -298,16 +302,28 @@ const Services = () => {
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               className="h-12 rounded-xl"
             />
+            <div className="flex items-start gap-3">
+              <Checkbox
+                id="service-agree"
+                checked={agreed}
+                onCheckedChange={(v) => setAgreed(v === true)}
+                className="mt-0.5"
+              />
+              <label htmlFor="service-agree" className="text-muted-foreground text-xs leading-relaxed cursor-pointer">
+                Я соглашаюсь с{" "}
+                <Link to="/privacy" target="_blank" className="text-orange hover:underline">
+                  Политикой конфиденциальности
+                </Link>{" "}
+                и даю согласие на обработку персональных данных
+              </label>
+            </div>
             <Button
               onClick={handleSubmit}
-              disabled={loading}
+              disabled={loading || !agreed}
               className="w-full h-12 bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl text-base transition-transform hover:scale-[1.02]"
             >
               {loading ? "Отправка..." : "Отправить заявку"}
             </Button>
-            <p className="text-muted-foreground text-xs text-center">
-              Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
-            </p>
           </div>
         </DialogContent>
       </Dialog>
