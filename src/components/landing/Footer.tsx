@@ -33,41 +33,37 @@ const Footer = () => (
           <ul className="space-y-3 text-sm text-white/50">
             <li className="flex items-center gap-2">
               <Phone size={14} className="text-orange" />
-              <a href="tel:+78001234567" className="hover:text-white transition-colors">
-                8 (800) 123-45-67
+              <a href="tel:+79228506001" className="hover:text-white transition-colors">
+                +7 (922) 850-60-01
               </a>
             </li>
             <li className="flex items-center gap-2">
               <Mail size={14} className="text-orange" />
-              <a href="mailto:info@archimet.ru" className="hover:text-white transition-colors">
-                info@archimet.ru
+              <a href="mailto:oren.arhimed@mail.ru" className="hover:text-white transition-colors">
+                oren.arhimed@mail.ru
               </a>
             </li>
             <li className="flex items-start gap-2">
               <MapPin size={14} className="text-orange mt-0.5" />
-              <span>Москва, ул. Примерная, д. 1</span>
+              <span>460026, г. Оренбург, ул. Одесская, д. 100</span>
             </li>
           </ul>
         </div>
 
-        {/* Social */}
+        {/* Реквизиты */}
         <div>
-          <h4 className="font-bold text-sm mb-4 uppercase tracking-wider text-white/70">Мы в соцсетях</h4>
-          <div className="flex gap-3">
-            {["TG", "VK", "WA"].map((s) => (
-              <div
-                key={s}
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-sm font-bold text-white/50 hover:bg-orange hover:text-white transition-colors cursor-pointer"
-              >
-                {s}
-              </div>
-            ))}
-          </div>
+          <h4 className="font-bold text-sm mb-4 uppercase tracking-wider text-white/70">Реквизиты</h4>
+          <ul className="space-y-1 text-xs text-white/40">
+            <li>ООО «АРХИМЕД ЛИР»</li>
+            <li>ИНН: 5610256637</li>
+            <li>ОГРН: 1255600003955</li>
+            <li>КПП: 5611001001</li>
+          </ul>
         </div>
       </div>
 
       <div className="border-t border-white/10 mt-12 pt-6 text-center text-white/30 text-xs">
-        © 2024 Архимет. Все права защищены.
+        © {new Date().getFullYear()} Архимед. Все права защищены.
       </div>
     </div>
   </footer>
