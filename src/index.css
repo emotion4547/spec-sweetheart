@@ -125,10 +125,14 @@
 
   .animate-float {
     animation: float 4s ease-in-out infinite;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .animate-float-delayed {
     animation: float-delayed 5s ease-in-out infinite 1s;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   .hover-lift {
