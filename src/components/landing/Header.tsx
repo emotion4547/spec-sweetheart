@@ -57,6 +57,7 @@ const Header = () => {
         <div className="hidden lg:flex items-center gap-4">
           <a
             href="tel:+79228506001"
+            onClick={() => { if (typeof ym === "function") ym(108428947, "reachGoal", "phone_click"); }}
             className="flex items-center gap-2 text-sm font-semibold text-white"
           >
             <Phone size={16} className="text-orange" />
@@ -91,7 +92,7 @@ const Header = () => {
               {l.label}
             </button>
           ))}
-          <a href="tel:+79228506001" className="flex items-center gap-2 text-sm font-semibold">
+          <a href="tel:+79228506001" onClick={() => { if (typeof ym === "function") ym(108428947, "reachGoal", "phone_click"); }} className="flex items-center gap-2 text-sm font-semibold">
             <Phone size={16} className="text-orange" /> +7 (922) 850-60-01
           </a>
           <Button

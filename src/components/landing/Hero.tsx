@@ -48,6 +48,7 @@ const Hero = () => {
           service: formData.service || null,
         },
       }).catch(() => {});
+      if (typeof ym === "function") ym(108428947, "reachGoal", "hero_form_submit");
       setFormData({ name: "", phone: "", service: "" });
       setAgreed(false);
       navigate("/thank-you");
