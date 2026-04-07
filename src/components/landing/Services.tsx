@@ -137,7 +137,41 @@ const services: Service[] = [
   },
 ];
 
-const Services = () => {
+const ScrollRevealCard = ({ children, index }: { children: React.ReactNode; index: number }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className="transition-all duration-700 ease-out"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0) scale(1)" : "translateY(40px) scale(0.95)",
+        transitionDelay: `${index * 100}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
   const [selected, setSelected] = useState<Service | null>(null);
   const [selectedProfession, setSelectedProfession] = useState<{ profession: Profession; service: Service } | null>(null);
   const [formData, setFormData] = useState({ name: "", phone: "", email: "" });
