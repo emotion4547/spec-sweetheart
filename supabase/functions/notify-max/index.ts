@@ -1,4 +1,7 @@
-import { corsHeaders } from "@supabase/supabase-js/cors";
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+};
 
 const MAX_BOT_TOKEN = Deno.env.get("MAX_BOT_TOKEN")!;
 const MAX_CHAT_ID = Deno.env.get("MAX_CHAT_ID")!;
