@@ -1,42 +1,42 @@
 
 
-## Причины лагов при скролле на мобильных и план оптимизации
+## Интеграция Яндекс.Метрики (счётчик 108428947)
 
-### Выявленные проблемы
+### 1. Добавить счётчик в `index.html`
 
-1. **`backdrop-blur-md` на анимированных элементах** — 6 плавающих карточек в Hero с `animate-float` + `backdrop-blur-md`. Браузер пересчитывает blur каждый кадр анимации — основная причина лагов.
+Вставить скрипт Метрики в `<head>`, а `<noscript>` блок с пикселем — в `<body>` (HTML5 не допускает `<img>` внутри `<noscript>` в `<head>`).
 
-2. **`backdrop-blur-md` на фиксированном Header** — при каждом скролле перерисовывается blur под шапкой.
+### 2. Добавить TypeScript-декларацию
 
-3. **Большие `blur-3xl` блобы** — декоративные круги 60–96rem с гауссовым размытием в Hero, CTABlock, Presentation, ThankYou. На мобильных GPU это дорого.
+Создать файл `src/types/ym.d.ts` с объявлением глобальной функции `ym()`, чтобы TypeScript не ругался на вызовы.
 
-4. **6 бесконечных CSS-анимаций** (`animate-float` / `animate-float-delayed`) работают постоянно, даже когда карточки за пределами экрана.
+### 3. Добавить `reachGoal` во все формы
 
-### План исправлений
+Вызывать `ym(108428947, 'reachGoal', '...')` после успешной отправки формы:
 
-#### 1. Hero — убрать `backdrop-blur` с плавающих карточек
-Заменить `bg-white/10 backdrop-blur-md` на непрозрачный фон без blur: `bg-[#1a2b4a]/90`. Визуально почти идентично, но без пересчёта blur на каждом кадре.
+| Файл | Цель (goal) |
+|------|------------|
+| `Hero.tsx` | `hero_form_submit` |
+| `Services.tsx` | `service_form_submit` |
+| `CTABlock.tsx` | `cta_form_submit` |
 
-#### 2. Header — заменить `backdrop-blur` на сплошной фон
-При скролле: `bg-navy-deep/98` вместо `bg-navy-deep/95 backdrop-blur-md`. На тёмном фоне разница незаметна.
+Вставить вызов перед `navigate("/thank-you")`.
 
-#### 3. Формы в Hero и CTABlock — убрать `backdrop-blur`
-Заменить на `bg-[#1a2b4a]/80` — blur на статичных элементах менее критичен, но на мобильных всё равно дорог.
+### 4. Отслеживание скачивания презентации
 
-#### 4. Декоративные блобы — скрыть на мобильных
-Добавить `hidden md:block` к blur-3xl блобам в Hero, CTABlock, Presentation. На маленьких экранах они не видны за контентом.
+В `Presentation.tsx` добавить `onClick` на ссылку скачивания с целью `download_presentation`.
 
-#### 5. Плавающие карточки — скрыть на мобильных (уже скрыты)
-Они уже в блоке `hidden lg:flex` — анимации не работают на мобильных. Но добавить `will-change: transform` на десктопе для GPU-ускорения.
+### 5. Отслеживание клика по телефону
 
-#### 6. CSS — добавить `will-change` и `transform: translateZ(0)`
-Для анимированных элементов — принудительный GPU-слой.
+В `Header.tsx` и `Footer.tsx` добавить `onClick` на ссылки с телефоном с целью `phone_click`.
 
 ### Затрагиваемые файлы
-
-- `src/components/landing/Hero.tsx` — карточки, блобы, форма
-- `src/components/landing/Header.tsx` — фиксированная шапка
-- `src/components/landing/CTABlock.tsx` — блоб, форма
-- `src/components/landing/Presentation.tsx` — блобы
-- `src/index.css` — `will-change` для анимаций
+- `index.html` — скрипт + noscript-пиксель
+- `src/types/ym.d.ts` — новый файл, декларация типов
+- `src/components/landing/Hero.tsx`
+- `src/components/landing/Services.tsx`
+- `src/components/landing/CTABlock.tsx`
+- `src/components/landing/Presentation.tsx`
+- `src/components/landing/Header.tsx`
+- `src/components/landing/Footer.tsx`
 
