@@ -25,6 +25,10 @@ const CTABlock = () => {
       toast({ title: "Ошибка", description: "Не удалось отправить заявку", variant: "destructive" });
     } else {
       toast({ title: "Заявка отправлена!", description: "Мы свяжемся с вами в ближайшее время" });
+      // Notify MAX (fire-and-forget)
+      supabase.functions.invoke("notify-max", {
+        body: { name: formData.name.trim(), phone: formData.phone.trim(), email: formData.email.trim() || null },
+      }).catch(() => {});
       setFormData({ name: "", phone: "", email: "" });
     }
   };

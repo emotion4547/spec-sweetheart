@@ -161,6 +161,16 @@ const Services = () => {
       toast({ title: "Ошибка", description: "Не удалось отправить заявку", variant: "destructive" });
     } else {
       toast({ title: "Заявка отправлена!", description: `Мы свяжемся с вами по поводу: ${selectedProfession?.profession.name}` });
+      // Notify MAX (fire-and-forget)
+      supabase.functions.invoke("notify-max", {
+        body: {
+          name: formData.name.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim() || null,
+          service: selectedProfession?.service.title || null,
+          profession: selectedProfession?.profession.name || null,
+        },
+      }).catch(() => {});
       setSelectedProfession(null);
       setFormData({ name: "", phone: "", email: "" });
     }
