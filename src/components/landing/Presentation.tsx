@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { FileDown, Sparkles } from "lucide-react";
+import { FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Presentation = () => {
@@ -36,11 +36,7 @@ const Presentation = () => {
           transform: visible ? "translateY(0) scale(1)" : "translateY(30px) scale(0.95)",
         }}
       >
-        <div className="inline-flex items-center gap-2 bg-orange/10 border border-orange/20 rounded-full px-4 py-1.5 mb-6">
-          <Sparkles size={16} className="text-orange" />
-          <span className="text-orange text-sm font-medium">Познакомьтесь с нами поближе</span>
-        </div>
-
+        <p className="text-orange font-semibold text-sm uppercase tracking-widest mb-3">Познакомьтесь с нами</p>
         <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
           Скачайте нашу презентацию
         </h2>
