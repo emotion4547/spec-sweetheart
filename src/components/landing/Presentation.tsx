@@ -1,0 +1,67 @@
+import { useState, useEffect, useRef } from "react";
+import { FileDown, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const Presentation = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section className="py-20 lg:py-28 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-navy-deep via-navy to-navy/90" />
+      <div className="absolute top-1/3 left-1/4 w-72 h-72 bg-orange/15 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/3 w-60 h-60 bg-orange/10 rounded-full blur-3xl" />
+
+      <div
+        ref={ref}
+        className="container mx-auto px-4 relative z-10 text-center transition-all duration-1000 ease-out"
+        style={{
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0) scale(1)" : "translateY(30px) scale(0.95)",
+        }}
+      >
+        <div className="inline-flex items-center gap-2 bg-orange/10 border border-orange/20 rounded-full px-4 py-1.5 mb-6">
+          <Sparkles size={16} className="text-orange" />
+          <span className="text-orange text-sm font-medium">Познакомьтесь с нами поближе</span>
+        </div>
+
+        <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+          Скачайте нашу презентацию
+        </h2>
+        <p className="text-white/60 text-lg max-w-xl mx-auto mb-10">
+          Узнайте больше о компании «Архимед», наших услугах, ценах и преимуществах работы с нами
+        </p>
+
+        <Button
+          asChild
+          className="bg-orange hover:bg-orange-light text-accent-foreground font-bold rounded-xl h-14 px-10 text-base transition-transform hover:scale-105"
+        >
+          <a href="/files/arhimed-presentation.pdf" download>
+            <FileDown size={20} />
+            Скачать презентацию
+          </a>
+        </Button>
+
+        <p className="text-white/30 text-xs mt-4">PDF · Коммерческое предложение</p>
+      </div>
+    </section>
+  );
+};
+
+export default Presentation;
