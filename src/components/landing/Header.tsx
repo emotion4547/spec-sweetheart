@@ -56,11 +56,11 @@ const Header = () => {
         {/* CTA */}
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="tel:+78001234567"
+            href="tel:+79228506001"
             className="flex items-center gap-2 text-sm font-semibold text-white"
           >
             <Phone size={16} className="text-orange" />
-            8 (800) 123-45-67
+            +7 (922) 850-60-01
           </a>
           <Button
             onClick={() => scrollTo("#cta")}
@@ -91,8 +91,8 @@ const Header = () => {
               {l.label}
             </button>
           ))}
-          <a href="tel:+78001234567" className="flex items-center gap-2 text-sm font-semibold">
-            <Phone size={16} className="text-orange" /> 8 (800) 123-45-67
+          <a href="tel:+79228506001" className="flex items-center gap-2 text-sm font-semibold">
+            <Phone size={16} className="text-orange" /> +7 (922) 850-60-01
           </a>
           <Button
             onClick={() => scrollTo("#cta")}
