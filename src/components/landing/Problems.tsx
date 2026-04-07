@@ -1,10 +1,13 @@
-import { AlertTriangle, UserX, Clock, DollarSign } from "lucide-react";
+import turnoverImg from "@/assets/problems/turnover.jpg";
+import shortageImg from "@/assets/problems/shortage.jpg";
+import costsImg from "@/assets/problems/costs.jpg";
+import risksImg from "@/assets/problems/risks.jpg";
 
 const problems = [
-  { icon: UserX, title: "Текучка кадров", desc: "Постоянный поиск и обучение новых сотрудников отнимает время и ресурсы" },
-  { icon: Clock, title: "Нехватка людей", desc: "Недоукомплектованность штата приводит к срыву сроков и потере клиентов" },
-  { icon: DollarSign, title: "Высокие затраты", desc: "Содержание штатных сотрудников обходится дороже аутсорсинга на 30-40%" },
-  { icon: AlertTriangle, title: "Кадровые риски", desc: "Больничные, прогулы и увольнения создают постоянные простои" },
+  { image: turnoverImg, title: "Текучка кадров", desc: "Постоянный поиск и обучение новых сотрудников отнимает время и ресурсы" },
+  { image: shortageImg, title: "Нехватка людей", desc: "Недоукомплектованность штата приводит к срыву сроков и потере клиентов" },
+  { image: costsImg, title: "Высокие затраты", desc: "Содержание штатных сотрудников обходится дороже аутсорсинга на 30-40%" },
+  { image: risksImg, title: "Кадровые риски", desc: "Больничные, прогулы и увольнения создают постоянные простои" },
 ];
 
 const Problems = () => (
@@ -21,13 +24,20 @@ const Problems = () => (
         {problems.map((p, i) => (
           <div
             key={i}
-            className="hover-lift bg-card rounded-2xl p-8 border border-orange/15 group hover:border-orange/30 transition-colors"
+            className="hover-lift bg-card rounded-2xl overflow-hidden border border-orange/15 group hover:border-orange/30 transition-colors flex flex-col"
           >
-            <div className="w-14 h-14 rounded-2xl bg-orange/10 flex items-center justify-center mb-5 group-hover:bg-orange/20 transition-colors">
-              <p.icon size={24} className="text-orange" />
+            <div className="h-40 overflow-hidden">
+              <img
+                src={p.image}
+                alt={p.title}
+                loading="lazy"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <h3 className="text-lg font-bold text-foreground mb-2">{p.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
+            <div className="p-6">
+              <h3 className="text-lg font-bold text-foreground mb-2">{p.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
+            </div>
           </div>
         ))}
       </div>
