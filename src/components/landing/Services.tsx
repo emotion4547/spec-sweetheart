@@ -230,7 +230,7 @@ const Services = () => {
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-3 text-xl">
-              {selected && <selected.icon size={24} className="text-orange" />}
+              {selected && <img src={selected.image} alt={selected.title} className="w-8 h-8 rounded-lg object-cover" />}
               {selected?.title}
             </DialogTitle>
             <DialogDescription>{selected?.desc}</DialogDescription>
