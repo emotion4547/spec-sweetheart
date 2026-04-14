@@ -104,9 +104,9 @@ const Hero = () => {
               onChange={(e) => setFormData({ ...formData, service: e.target.value })}
               className="w-full h-10 rounded-xl bg-white/10 border border-white/20 text-white/70 px-3 text-sm"
             >
-              <option value="">Выберите услугу</option>
+              <option value="" className="bg-[#1a2744] text-white">Выберите услугу</option>
               {serviceOptions.map((s) => (
-                <option key={s} value={s}>{s}</option>
+                <option key={s} value={s} className="bg-[#1a2744] text-white">{s}</option>
               ))}
             </select>
             <div className="flex items-start gap-3">
