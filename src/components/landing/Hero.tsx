@@ -23,6 +23,7 @@ const Hero = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", service: "" });
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [customService, setCustomService] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
