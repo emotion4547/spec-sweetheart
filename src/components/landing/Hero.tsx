@@ -76,7 +76,7 @@ const Hero = () => {
         <div className="space-y-6 text-center items-center flex flex-col lg:text-left lg:items-start lg:block">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight -mt-8 mx-auto lg:mx-0">
             Аутсорсинг линейного персонала{" "}
-            <span className="text-orange">за 24 часа</span>
+            <span className="text-orange">за 48 часов</span>
           </h1>
           <p className="text-lg text-white/70 max-w-lg mx-auto lg:mx-0">
             Предоставим квалифицированных сотрудников для вашего склада, производства
