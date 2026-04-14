@@ -23,6 +23,7 @@ const Hero = () => {
   const [formData, setFormData] = useState({ name: "", phone: "", service: "" });
   const [agreed, setAgreed] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [customService, setCustomService] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -50,6 +51,7 @@ const Hero = () => {
       }).catch(() => {});
       if (typeof ym === "function") ym(108428947, "reachGoal", "hero_form_submit");
       setFormData({ name: "", phone: "", service: "" });
+      setCustomService(false);
       setAgreed(false);
       navigate("/thank-you");
     }
@@ -99,16 +101,42 @@ const Hero = () => {
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-10 rounded-xl"
               />
             </div>
-            <select
-              value={formData.service}
-              onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-              className="w-full h-10 rounded-xl bg-white/10 border border-white/20 text-white/70 px-3 text-sm"
-            >
-              <option value="" className="bg-[#1a2744] text-white">Выберите услугу</option>
-              {serviceOptions.map((s) => (
-                <option key={s} value={s} className="bg-[#1a2744] text-white">{s}</option>
-              ))}
-            </select>
+            {customService ? (
+              <div className="flex gap-2">
+                <Input
+                  placeholder="Введите название услуги"
+                  value={formData.service}
+                  onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                  className="bg-white/10 border-white/20 text-white placeholder:text-white/50 h-10 rounded-xl flex-1"
+                />
+                <button
+                  type="button"
+                  onClick={() => { setCustomService(false); setFormData({ ...formData, service: "" }); }}
+                  className="text-white/50 hover:text-white text-sm px-2"
+                >
+                  ✕
+                </button>
+              </div>
+            ) : (
+              <select
+                value={formData.service}
+                onChange={(e) => {
+                  if (e.target.value === "__custom__") {
+                    setCustomService(true);
+                    setFormData({ ...formData, service: "" });
+                  } else {
+                    setFormData({ ...formData, service: e.target.value });
+                  }
+                }}
+                className="w-full h-10 rounded-xl bg-white/10 border border-white/20 text-white/70 px-3 text-sm"
+              >
+                <option value="" className="bg-[#1a2744] text-white">Выберите услугу</option>
+                {serviceOptions.map((s) => (
+                  <option key={s} value={s} className="bg-[#1a2744] text-white">{s}</option>
+                ))}
+                <option value="__custom__" className="bg-[#1a2744] text-white">Другое (ввести свой запрос)</option>
+              </select>
+            )}
             <div className="flex items-start gap-3">
               <Checkbox
                 id="hero-agree"
